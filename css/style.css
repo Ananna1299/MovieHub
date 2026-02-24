@@ -1,0 +1,129 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #60ab91;
+    --text-primary: red;
+    --text-secondary:  #60ab91;
+    --card-bg: #ffffff;
+ 
+}
+
+body.dark-theme {
+    --bg-primary: #1a1a1a;
+  
+    --text-primary: red;
+    --text-secondary: #ccc;
+    --card-bg: #2d2d2d;
+    --border-color: #444;
+}
+
+
+body{
+    background: var(--bg-primary);
+    color: var(--text-primary);
+   
+}
+
+
+img{
+    width: 100%;
+}
+
+
+
+.Inter{
+     font-family: "Inter", sans-serif;
+}
+.Noto{
+      font-family: "Noto Serif", serif;
+
+}
+
+.set-width{
+     max-width: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+
+/* NAV SECTION DONE */
+#logo-img{
+    height: 70px;
+    width: 70px;
+}
+
+.nav-div{
+    display: flex;
+    gap: 5px;
+    align-items: end;
+}
+
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    
+}
+
+#search-input {
+  padding: 10px 15px;
+  width: 250px;
+  border: 2px solid red;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s ease;
+  color: #666;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  background-color: #ff4c4c;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover{
+    animation: btnStyle 0.6s ease-in-out;
+}
+
+#search-form button:hover {
+  background-color: var(--bg-secondary);
+}
+
+/* MAIN SECTION */
+.movieHolder{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 80px;
+    
+
+}
+#movieSection{
+    flex:2;
+    border: 2px solid red;
+    border-radius: 6px;
+}
+#wishListSection{
+    flex:1;
+    border: 2px solid #60ab91;
+     border-radius: 6px;
+}
+
+.heading{
+    padding: 10px;
+    text-align: center;
+    
+}
