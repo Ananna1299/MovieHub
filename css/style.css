@@ -149,7 +149,7 @@ img{
 }
 #movieSection{
     flex:2;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     border-radius: 6px;
 }
 #wishListSection{
@@ -163,3 +163,77 @@ img{
     text-align: center;
     
 }
+
+#movieContainer{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 5px;
+    row-gap: 5px;
+    padding:10px;
+}
+
+.card{
+
+  width: 280px;
+  ;
+  border: 2px solid #60ab91;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  border-radius: 6px;
+
+}
+
+.movie-content {
+  
+  display: flex;
+  flex-direction: column;
+  flex: 1;                 
+}
+
+.movie-title {
+  font-size: 18px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  text-align: left;
+  
+  margin-bottom: 6px;
+  
+}
+
+.movie-info{
+    display: flex;
+  gap:5px;
+  ;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.category{
+    background-color: var(--bg-secondary);
+    color: var(--bg-primary);
+    padding: 5px;
+    border-radius: 5px;
+    
+}
+
+.add-btn {
+  margin-top: auto;       
+  padding: 8px;
+   border: none;
+  background-color: #ff4c4c;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-btn:hover{
+    animation: btnStyle 0.6s ease-in-out;
+}
+

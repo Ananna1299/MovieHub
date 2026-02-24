@@ -41,8 +41,8 @@ async function loadMovies() {
 
     totalResults = parseInt(data.totalResults);
 
-    //renderMovies(data.Search);
-    console.log(data.Search)
+    renderMovies(data.Search);
+    
     updatePagination();
 
   } catch (err) {
@@ -73,3 +73,36 @@ prevBtn.addEventListener("click", async () => {
 
 
 // Movie display
+function renderMovies(movies) {
+  container.innerHTML = "";
+
+  movies.forEach(movie => {
+    const card = document.createElement("article");
+
+    card.innerHTML = `
+     <div class="card">
+      <figure>
+    <img src="${movie.Poster}" alt="${movie.Title}">
+  </figure>
+
+  <div class="movie-content">
+    <p class="movie-title">
+      ${movie.Title}
+    </p>
+
+
+    <div class="movie-info">
+      <span class="category">${movie.Type}</span>
+      <span class="category">${movie.Year}</span>
+
+    </div>
+
+    <button class="add-btn">💚 Add to wishlist</button>
+
+    
+      </div>
+    `;
+
+    container.appendChild(card);   // ✅ move inside
+  });
+}
