@@ -9,3 +9,12 @@ export async function searchMovies(query,page = 1) {
     throw new Error(data.Error)};
   return data;
 }
+
+
+// Movie details
+export async function fetchDetails(id) {
+  const res = await fetch(`${BASE_URL}&i=${id}&plot=full`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch details")};
+  return res.json();
+}

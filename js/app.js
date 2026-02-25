@@ -1,4 +1,5 @@
-import { searchMovies } from "./api.js";
+import { searchMovies,fetchDetails} from "./api.js";
+import { fetchReviews } from "./reviews.js";
 
 
 
@@ -16,6 +17,10 @@ const input = document.getElementById("search-input");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const pageNumber = document.getElementById("pageNumber");
+
+//for modal
+const modal = document.getElementById("movieModal");
+const modalContent = document.getElementById("modalContent");
 
 /* SEARCH */
 form.addEventListener("submit", async (e) => {
@@ -99,10 +104,83 @@ function renderMovies(movies) {
 
     <button class="add-btn">💚 Add to wishlist</button>
 
+
     
       </div>
     `;
+    
+    container.appendChild(card);   
 
-    container.appendChild(card);   // ✅ move inside
+    card.addEventListener("click", () => openModal(movie.imdbID));
   });
 }
+
+async function openModal(id) {
+  modalContent.innerHTML = `<div class="loading">Loading details...</div>`;
+   modal.showModal();
+
+   try {
+    const [details, reviews] = await Promise.all([
+      fetchDetails(id),
+      fetchReviews(id)
+    ]);
+
+    renderModal(details, reviews);
+
+  } catch (err) {
+    modalContent.innerHTML = "Failed to load data";
+  }
+}
+
+
+function renderModal(details, reviews) {
+  modalContent.innerHTML = `
+  <div class="modal-wrapper">
+
+    <div class="modal-header">
+      
+
+      <div class="modal-main">
+        <h2 class="modal-title">${details.Title}</h2>
+        <p class="modal-plot">${details.Plot}</p>
+
+        <div class="modal-meta">
+          <div><span class="key">Language:</span> <span>${details.Language}</span></div>
+          <div><span class="key">Actors:</span> <span>${details.Actors}</span></div>
+          <div><span class="key">Director:</span> <span>${details.Director}</span></div>
+          <div><span class="key">Year:</span> <span>${details.Year}</span></div>
+          <div><span class="key">Genre:</span> <span>${details.Genre}</span></div>
+          <div><span class="key">IMDB Rating:</span> ⭐ ${details.imdbRating}</div>
+        </div>
+      </div>
+    </div>
+
+    <hr/>
+
+    <h3 class="review-heading">Reviews</h3>
+
+    <div class="reviews">
+      ${
+        reviews.length === 0
+          ? "<p class='no-review'>No reviews yet.</p>"
+          : reviews.map(r => `
+              <div class="review-card">
+                <div class="review-top">
+                  <strong>${r.name}</strong>
+                  <span class="rating">⭐ ${r.rating}</span>
+                </div>
+                <p>${r.comment}</p>
+              </div>
+            `).join("")
+      }
+    </div>
+
+  </div>
+`;
+}
+
+document.getElementById("closeModal")
+  .addEventListener("click", () => modal.close());
+
+
+
