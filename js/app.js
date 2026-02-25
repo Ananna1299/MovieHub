@@ -25,6 +25,9 @@ const modalContent = document.getElementById("modalContent");
 // for theme toggle
 const themeToggleBtn = document.getElementById("themeToggle-id");
 
+//for filter
+const typeFilter = document.getElementById("typeFilter");
+
 
 
 
@@ -227,5 +230,31 @@ themeToggleBtn.addEventListener("click", () => {
   }
 });
 
+
+
+
 //load
 loadTheme();
+
+
+// for filter
+
+typeFilter.addEventListener("change", () => {
+  filterMovies(typeFilter.value);
+});
+
+function filterMovies(type) {
+  const cards = document.querySelectorAll(".card");
+  
+
+  cards.forEach(card => {
+    const category = card.querySelector(".category").textContent.toLowerCase();
+    console.log(category)
+
+    if (type === "all" || category === type) {
+      card.style.display = "flex";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
