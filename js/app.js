@@ -22,6 +22,19 @@ const pageNumber = document.getElementById("pageNumber");
 const modal = document.getElementById("movieModal");
 const modalContent = document.getElementById("modalContent");
 
+// for theme toggle
+const themeToggleBtn = document.getElementById("themeToggle-id");
+
+
+
+
+
+
+
+
+
+
+
 /* SEARCH */
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -183,4 +196,36 @@ document.getElementById("closeModal")
   .addEventListener("click", () => modal.close());
 
 
+//Toggle theme 
 
+
+// Load saved theme after the page loads
+function loadTheme() {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    themeToggleBtn.textContent = "☀️"; 
+  } else {
+    document.body.classList.remove("dark");
+    themeToggleBtn.textContent = "🌙"; 
+  }
+}
+
+// Toggle theme 
+themeToggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+
+  if (isDark) {
+    localStorage.setItem("theme", "dark");
+    themeToggleBtn.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme", "light");
+    themeToggleBtn.textContent = "🌙";
+  }
+});
+
+//load
+loadTheme();

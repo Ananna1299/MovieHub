@@ -51,7 +51,7 @@
     </header>
 
 
-    <main>
+    <main style="min-height: 90vh;">
         <div class="set-width movieHolder">
             <section id="movieSection">
                 <h2 class="heading">🍿Movies</h2>
@@ -71,13 +71,17 @@
         </div>
 
 
-        <section id="pagination">
+        
+        
+    </main>
+
+    <!-- pagination -->
+
+    <section id="pagination">
                 <button id="prevBtn" class="btn" disabled>⬅ Prev</button>
                 <span id="pageNumber">Page 1</span>
                 <button id="nextBtn" class="btn">Next ➡</button>
-            </section>
-        
-    </main>
+    </section>
 
     <!-- modal -->
      
@@ -85,12 +89,27 @@
         <div id="modalContent"></div>
         <button id="closeModal" class="btn">Close</button>
     </dialog>
-    <footer>
+    <footer class="footer">
+     <div class="footerContainer">
+        
 
+        <div class="nav-div">
+                <figure id="logo-img">
+                <img src="./assets/logo.png" alt="logo">
+            </figure>
+            <h3 class="Noto">Movie <span style="color:white ;">Hub</span></h3>
+            
+
+            </div>
+
+            <h2> <span style="color: white ;">𝄞⨾💿✮˚.⋆ Ananna Paul  𝄞⨾💿✮˚.⋆</span></h2>
+            <button class="theme-toggle" id="themeToggle-id">🌙</button>
+
+     </div>
     </footer>
     
 
 
-    <script type="module" src="js/app.js"></script>
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
