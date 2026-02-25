@@ -18,3 +18,17 @@ export async function fetchDetails(id) {
     throw new Error("Failed to fetch details")};
   return res.json();
 }
+
+
+//movies get by directorName
+
+export async function searchByDirector(directorName) {
+  const res = await fetch(`${BASE_URL}&s=${directorName}`);
+  const data = await res.json();
+
+  if (data.Response === "False") {
+    return []; // return empty array instead of error
+  }
+
+  return data.Search;
+}

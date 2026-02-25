@@ -1,4 +1,4 @@
-import { searchMovies,fetchDetails} from "./api.js";
+import { searchMovies,fetchDetails,searchByDirector} from "./api.js";
 import { fetchReviews } from "./reviews.js";
 
 
@@ -141,7 +141,12 @@ async function openModal(id) {
       fetchReviews(id)
     ]);
 
-    renderModal(details, reviews);
+
+      //director data pass
+      const relatedFilms = await searchByDirector(details.Director);
+      console.log(relatedFilms)
+
+    renderModal(details, reviews,relatedFilms);
 
   } catch (err) {
     modalContent.innerHTML = "Failed to load data";
@@ -149,7 +154,7 @@ async function openModal(id) {
 }
 
 
-function renderModal(details, reviews) {
+function renderModal(details, reviews,relatedFilms = []) {
   modalContent.innerHTML = `
   <div class="modal-wrapper">
 
@@ -190,6 +195,19 @@ function renderModal(details, reviews) {
             `).join("")
       }
     </div>
+
+     <hr/>
+
+   <div class="director-movies">
+    <h3 class="related-heading">Other Movies by ${details.Director}</h3>
+    <ul class="related-films">
+      ${
+        relatedFilms.length === 0
+          ? "<li>No other movies found.</li>"
+          : relatedFilms.map((film,index) => `<li class="list-items">${index+1}. ${film.Title} (${film.Year})</li>`).join("")
+      }
+    </ul>
+   </div>
 
   </div>
 `;
@@ -249,7 +267,7 @@ function filterMovies(type) {
 
   cards.forEach(card => {
     const category = card.querySelector(".category").textContent.toLowerCase();
-    console.log(category)
+    //console.log(category)
 
     if (type === "all" || category === type) {
       card.style.display = "flex";

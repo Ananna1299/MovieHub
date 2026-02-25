@@ -312,7 +312,7 @@ img{
   background: #f5f5f5;
   padding: 12px;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .review-top {
@@ -328,6 +328,7 @@ img{
 .no-review {
   color: #777;
   font-style: italic;
+  margin-bottom: 10px;
 }
 
 
@@ -367,3 +368,17 @@ img{
     
 }
 
+/* director same movie */
+.director-movies{
+    margin-top: 20px;
+}
+
+.related-heading{
+    color:red
+}
+.related-films{
+    margin-top: 10px;
+}
+.list-items{
+    margin-bottom: 2px;
+}
