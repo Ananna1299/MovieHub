@@ -2,7 +2,7 @@
 /* mobile device */
 
 
-/* navbar */
+
 @media screen and (max-width:480px) {
 
 .nav-container {
@@ -54,4 +54,39 @@
 #movieModal {
     width: 70%;
 }
+}
+
+/* tablet */
+@media screen and (max-width:768px) {
+  .movieHolder{
+    
+    flex-direction: column;
+   
+    
+
+}
+#movieSection{
+  
+    border-bottom: 2px solid red;
+    border-right: 0px ;
+
+
+}
+
+#movieContainer{
+    
+    grid-template-columns: repeat(2,1fr);
+    
+}
+
+.card{
+
+  width:100%;
+  }
+
+#movieModal {
+    width: 70%;
+}
+
+
 }
