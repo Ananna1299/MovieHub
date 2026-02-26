@@ -1,5 +1,6 @@
 import { searchMovies,fetchDetails,searchByDirector} from "./api.js";
 import { fetchReviews } from "./reviews.js";
+import { addToWatchlist, removeFromWatchlist, getWatchlist } from "./watchlist.js";
 
 
 
@@ -27,6 +28,10 @@ const themeToggleBtn = document.getElementById("themeToggle-id");
 
 //for filter
 const typeFilter = document.getElementById("typeFilter");
+
+//for watchlist
+const watchlistUI = document.getElementById("watchlist");
+const watchCount = document.getElementById("watchCount");
 
 
 
@@ -127,15 +132,27 @@ function renderMovies(movies) {
     `;
     
     container.appendChild(card);  
+
+    //wishlist
+    card.querySelector(".add-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      const added = addToWatchlist(movie);
+      if (!added) {
+      alert("⚠️ This movie is already in your watchlist!");
+      return;
+  }
+      renderWatchlist();
+    });
      
 
     //card.addEventListener("click", () => openModal(movie.imdbID));
+
     container.addEventListener("click", (e) => {
       const card = e.target.closest(".card");
       if (!card) return;
       const movieId = card.dataset.id;            
 
-      console.log("Movie clicked (bubbled to container):", movieId);  // 🔥 EDITED
+      console.log("Movie clicked (bubbled to container):", movieId);  
 
       openModal(movieId);    
     })
@@ -279,10 +296,38 @@ themeToggleBtn.addEventListener("click", () => {
 });
 
 
+/* WATCHLIST */
+function renderWatchlist() {
+  watchlistUI.innerHTML = "";
+  const list = getWatchlist();
 
+  watchCount.textContent = list.length;
+
+  list.forEach(movie => {
+    const item = document.createElement("div");
+    item.classList.add("watchlist-item");
+
+    item.innerHTML = `
+      <p class="watch-title">${movie.Title}</p>
+      <button class="remove-btn btn" data-id="${movie.imdbID}">
+         Remove
+      </button>
+    `;
+
+    item.querySelector(".remove-btn").addEventListener("click", () => {
+      removeFromWatchlist(movie.imdbID);
+      renderWatchlist();
+    });
+
+    watchlistUI.appendChild(item);
+  });
+}
 
 //load
 loadTheme();
+
+//watchlist
+renderWatchlist();
 
 
 // for filter
