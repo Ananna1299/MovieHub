@@ -162,6 +162,7 @@ img{
     /* border: 2px solid red; */
     border-right: 2px solid red;;
     /* border-radius: 6px; */
+
 }
 #wishListSection{
     flex:1;
@@ -183,6 +184,46 @@ img{
     row-gap: 5px;
     padding:10px;
 }
+
+/* for list view */
+
+#movieContainer.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+#movieContainer.list-view .card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#movieContainer.list-view img {
+  width: 120px;
+  height: auto;
+}
+
+#movieContainer.list-view .movie-content {
+  flex: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .card{
 

@@ -34,6 +34,9 @@ const watchlistUI = document.getElementById("watchlist");
 const watchCount = document.getElementById("watchCount");
 
 
+const toggleGrid = document.getElementById("toggle-grid");
+
+
 
 
 
@@ -359,3 +362,17 @@ function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US");
 }
+
+
+toggleGrid.addEventListener("click", () => {
+  container.classList.toggle("list-view");
+
+  const isList = container.classList.contains("list-view");
+
+  if (isList) {
+    toggleGrid.textContent = "Grid";
+  } else {
+    toggleGrid.textContent = "List";
+  }
+  
+})

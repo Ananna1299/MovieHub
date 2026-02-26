@@ -56,9 +56,13 @@
             <section id="movieSection">
                 <h2 class="heading">🍿Movies</h2>
 
-                <!-- filter option -->
+              
 
-              <div style="display: flex; align-items: center; gap: 3px;">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 3px;
+              margin-right: 10px;">
+
+                <!-- filter option -->
+                <div style="display: flex; align-items: center; gap: 3px;">
                 <h4>Filter by Genre</h4>
                 <select id="typeFilter">
                             <option value="all">All</option>
@@ -68,12 +72,20 @@
                 </select>
 
               </div>
+               <!-- layout options -->
+              <div style="display: flex; align-items: center; gap: 3px; ">
+                
+                <button class="btn" id="toggle-grid">List</button>
+
+              </div>
+              </div>
+              
                 
 
 
 
 
-               <div id="movieContainer" >
+               <div id="movieContainer" class="add-class">
 
                 
                 
