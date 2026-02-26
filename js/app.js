@@ -32,7 +32,8 @@ const typeFilter = document.getElementById("typeFilter");
 
 
 
-
+//time format
+console.log(formatDate("2026-02-25")); 
 
 
 
@@ -101,7 +102,7 @@ function renderMovies(movies) {
     const card = document.createElement("article");
 
     card.innerHTML = `
-     <div class="card">
+     <div class="card" data-id="${movie.imdbID}">
       <figure>
     <img src="${movie.Poster}" alt="${movie.Title}">
   </figure>
@@ -125,11 +126,23 @@ function renderMovies(movies) {
       </div>
     `;
     
-    container.appendChild(card);   
+    container.appendChild(card);  
+     
 
-    card.addEventListener("click", () => openModal(movie.imdbID));
+    //card.addEventListener("click", () => openModal(movie.imdbID));
+    container.addEventListener("click", (e) => {
+      const card = e.target.closest(".card");
+      if (!card) return;
+      const movieId = card.dataset.id;            
+
+      console.log("Movie clicked (bubbled to container):", movieId);  // 🔥 EDITED
+
+      openModal(movieId);    
+    })
   });
 }
+
+
 
 async function openModal(id) {
   modalContent.innerHTML = `<div class="loading">Loading details...</div>`;
@@ -144,7 +157,7 @@ async function openModal(id) {
 
       //director data pass
       const relatedFilms = await searchByDirector(details.Director);
-      console.log(relatedFilms)
+      //console.log(relatedFilms)
 
     renderModal(details, reviews,relatedFilms);
 
@@ -213,8 +226,25 @@ function renderModal(details, reviews,relatedFilms = []) {
 `;
 }
 
+// close by button(close button)
 document.getElementById("closeModal")
   .addEventListener("click", () => modal.close());
+
+//close by esc button
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modal.open) {
+    modal.close();
+  }
+});
+
+//close by clicking outside of the modal
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.close();
+  }
+});
+
 
 
 //Toggle theme 
@@ -275,4 +305,12 @@ function filterMovies(type) {
       card.style.display = "none";
     }
   });
+}
+
+
+
+// Utility function at the bottom
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US");
 }
