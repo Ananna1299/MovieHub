@@ -1,0 +1,57 @@
+
+/* mobile device */
+
+
+/* navbar */
+@media screen and (max-width:480px) {
+
+.nav-container {
+  
+    align-items: center;
+    gap: 40px;
+  }
+
+  #search-form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  #search-input {
+    width: 60%;
+  }
+
+  /* movie part */
+  
+
+.movieHolder{
+    
+    flex-direction: column;
+   
+    
+
+}
+#movieSection{
+  
+    border-bottom: 2px solid red;
+    border-right: 0px ;
+
+
+}
+
+#movieContainer{
+    
+    grid-template-columns: repeat(1,1fr);
+    
+}
+
+.card{
+
+  width:100%;
+  }
+
+#movieModal {
+    width: 70%;
+}
+}

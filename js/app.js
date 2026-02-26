@@ -363,7 +363,7 @@ function formatDate(dateString) {
     return date.toLocaleDateString("en-US");
 }
 
-
+//grid/list
 toggleGrid.addEventListener("click", () => {
   container.classList.toggle("list-view");
 

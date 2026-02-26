@@ -259,9 +259,8 @@ img{
 }
 
 .movie-info{
-    display: flex;
+display: flex;
   gap:5px;
-  ;
   align-items: center;
   margin-bottom: 10px;
 }
@@ -333,6 +332,7 @@ dialog::backdrop {
   margin-bottom: 20px;
   line-height: 1.6;
   color: #444;
+  text-align: justify;
 }
 
 .modal-meta {
