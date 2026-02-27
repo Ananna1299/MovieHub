@@ -179,7 +179,7 @@ img{
 
 #movieContainer{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(4,1fr);
     column-gap: 5px;
     row-gap: 5px;
     padding:10px;
@@ -463,13 +463,17 @@ dialog::backdrop {
 /* Movie title */
 .watch-title {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.4;
 }
 
 /* Remove button */
 .remove-btn {
-  width: 100px;
+  width:30px;
+  background:none;
+  color:red;
+  border:none;
+   font-size: 20px;
   
 }
 

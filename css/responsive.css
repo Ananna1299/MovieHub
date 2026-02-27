@@ -57,7 +57,7 @@
 }
 
 /* tablet */
-@media screen and (max-width:768px) {
+@media screen and (min-width:481px) and (max-width:768px) {
   .movieHolder{
     
     flex-direction: column;
@@ -71,6 +71,12 @@
     border-right: 0px ;
 
 
+}
+#watchlist {
+  display: grid;
+   grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+  margin-top: 15px;
 }
 
 #movieContainer{
@@ -90,3 +96,50 @@
 
 
 }
+
+/* desktop */
+@media screen and (min-width:769px) and (max-width:1024px) {
+
+    .movieHolder{
+    
+    flex-direction: column;
+   
+    
+
+}
+#movieSection{
+  
+    border-bottom: 2px solid red;
+    border-right: 0px ;
+
+
+}
+
+#movieContainer{
+    
+    grid-template-columns: repeat(3,1fr);
+    
+}
+
+#watchlist {
+  display: grid;
+   grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.card{
+
+  width: 100%;
+  
+}
+
+#movieModal {
+    width: 70%;
+}
+
+
+}
+ 
+
+

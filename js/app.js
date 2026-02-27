@@ -302,7 +302,9 @@ themeToggleBtn.addEventListener("click", () => {
 /* WATCHLIST */
 function renderWatchlist() {
   watchlistUI.innerHTML = "";
-  const list = getWatchlist();
+  const list = getWatchlist()
+  .slice() 
+  .sort((a, b) => a.Title.localeCompare(b.Title));;
 
   watchCount.textContent = list.length;
 
@@ -312,8 +314,9 @@ function renderWatchlist() {
 
     item.innerHTML = `
       <p class="watch-title">${movie.Title}</p>
-      <button class="remove-btn btn" data-id="${movie.imdbID}">
-         Remove
+      <p style="color:#60ab91;">${movie.Year}</p>
+      <button class="remove-btn " data-id="${movie.imdbID}">
+         <i class="fa-solid fa-delete-left"></i>
       </button>
     `;
 
