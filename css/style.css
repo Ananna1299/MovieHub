@@ -53,14 +53,37 @@ img{
     margin-top: 20px;
 }
 
-.loading {
+/* .loading {
   font-size: 20px;
   font-weight: 600;
   text-align: center;
   padding: 40px 0;
   color: #60ab91;
+} */
+
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 50px 50px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #60ab91;
 }
 
+
+.loading::before {
+  content: "";
+  width: 45px;
+  height: 45px;
+  border: 5px solid #e0e0e0;
+  border-top: 5px solid #60ab91;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
 
 
 /* NAV SECTION DONE */
@@ -238,6 +261,10 @@ img{
   height: 100%;
   border-radius: 6px;
 
+}
+
+.card:hover{
+    animation: cardStyle 0.6s ease-in-out;
 }
 
 .movie-content {
